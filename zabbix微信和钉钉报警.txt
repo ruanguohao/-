@@ -1,0 +1,37 @@
+微信拼接:
+#企业ID
+corpid='ww15122ef105762abd'
+
+#应用安全码
+appsecret='RzrUiDaShCdxVP_69Kjznq6C2-_v4fQCFeQfB1B5QHw'
+
+#应用ID
+agentid=1000004
+
+#获取token值
+token_url='https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=企业ID&应用安全码
+
+#拼接发送消息的命令
+curl -s -H "Content-Type: application/json" -X POST "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=${token}" -d'
+{
+   "toparty" : "微信组",
+   "msgtype" : "text",
+   "agentid" : '应用ID',
+   "text" : {
+       "content" : "报警标题 \n\n 报警内容"
+   },
+   "safe":0
+}'
+
+
+钉钉拼接:
+#token地址
+https://oapi.dingtalk.com/robot/send?access_token=c0cf71b36f883364733bf636effbaedba69a66c89850c79e24d8d56057571d3b
+
+#拼接发送消息的命令
+curl 'https://oapi.dingtalk.com/robot/send?access_token=c0cf71b36f883364733bf636effbaedba69a66c89850c79e24d8d56057571d3b' \
+ -H 'Content-Type: application/json' \
+ -d '{"msgtype": "text","text": {"content":"'"${title}\n\n${message}"'"}}
+ 
+
+
